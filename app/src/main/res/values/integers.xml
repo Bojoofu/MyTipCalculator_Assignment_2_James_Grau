@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="btnCalculateShadowX">10</integer>
+    <integer name="btnCalculateShadowY">10</integer>
+    <integer name="btnCalculateShadowRadius">10</integer>
+</resources>
