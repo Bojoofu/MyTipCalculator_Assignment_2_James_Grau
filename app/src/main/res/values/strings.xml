@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Tip Calculator - James Grau | Assignment 2</string>
+    <string name="lblTitle">Tip Calculator</string>
+    <string name="lblBillAmount">Bill Amount</string>
+    <string name="txtBillAmount" />
+    <string name="strBillAmount">Bill Amount</string>
+    <string name="strTipAmountPrompt">Tip Amount</string>
+    <string name="lblTipAmount">Tip Amount</string>
+    <string name="cbxRoundTip">Round Tip?</string>
+    <string name="lblRound">Round Tip</string>
+    <string name="btnCalculate">Calculate</string>
+    <string name="lblTipTotal">Tip Total:</string>
+    <string name="lblTipTotalAMount" />
+    <string name="lblTipTotalAmount">$ 00.00</string>
+    <string name="lblFinalAmount">Total Amount:</string>
+</resources>
