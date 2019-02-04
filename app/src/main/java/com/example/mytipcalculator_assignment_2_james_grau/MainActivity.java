@@ -11,10 +11,12 @@ package com.example.mytipcalculator_assignment_2_james_grau;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -44,6 +46,30 @@ public class MainActivity extends AppCompatActivity {
         chbRoundTip = findViewById(R.id.chbRoundTip);
         lblTipAmount = findViewById(R.id.lblTipAmount);
         lblTotalAmount = findViewById(R.id.lblTotalAmount);
+
+        // Set the selection of the spinner to the first item of the array
+        spnTipAmount.setSelection(0, true);
+
+        // Create a variable to store the view of the spinner
+        View v = spnTipAmount.getSelectedView();
+
+        // Set the textView color of the spinner to white
+        ((TextView) v).setTextColor(Color.WHITE);
+
+        // Add an event handler for when an item is selected
+        spnTipAmount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            // This function is used to handle when an item is selected
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Set the textView color of the spinner to white
+                ((TextView) view).setTextColor(Color.WHITE);
+            }
+
+            // This method is used to handle when nothing is selected
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     // This method is used to perform the calculation of the tip and final amount
