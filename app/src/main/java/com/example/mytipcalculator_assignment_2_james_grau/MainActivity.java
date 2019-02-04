@@ -9,6 +9,8 @@ package com.example.mytipcalculator_assignment_2_james_grau;
 
 // Import the needed packages
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +48,33 @@ public class MainActivity extends AppCompatActivity {
 
     // This method is used to perform the calculation of the tip and final amount
     public void calculateTip(View view) {
+        // Check if the bill amount was added/empty
+        if (txtBillAmount.getText().toString().isEmpty()) {
+            // Initialize an alert dialog as the bill amount wasn't entered
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            // Set the alert Message and Title
+            builder.setMessage("Oops... The bill amount wasn't entered.  Please enter the bill amount and try again.").setTitle("Bill Amount Missing");
+
+            // Set the alert 'OK' button
+            builder.setPositiveButton("I'll try again.", new DialogInterface.OnClickListener() {
+                // This function is used to perform the onClick action for the button
+                public void onClick(DialogInterface dialog, int id) {
+                    // Just return as the user will try again
+                    return;
+                }
+            });
+
+            // Initialize the dialog
+            AlertDialog dialog = builder.create();
+
+            // Show the alert dialog
+            dialog.show();
+
+            // Return as the user hasn't entered a bill amount
+            return;
+        }
+
         // Create the needed variables
         Double billAmount = Double.parseDouble(txtBillAmount.getText().toString()),
                 tipAmount,
