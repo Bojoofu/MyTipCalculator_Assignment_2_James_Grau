@@ -1,6 +1,16 @@
+/**
+ * James Grau
+ * February 2, 2019
+ * Assignment 2
+ **/
+
+// This is the packages that this class belongs to
 package com.example.mytipcalculator_assignment_2_james_grau;
 
+// Import the needed packages
+
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -10,15 +20,19 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 
+// This is the main class to run the whole application
 public class MainActivity extends AppCompatActivity {
     // Create the needed variables
     Spinner spnTipAmount;
     EditText txtBillAmount;
     CheckBox chbRoundTip;
     TextView lblTipAmount, lblTotalAmount;
+    private String tipAmount, finalAmount;
 
+    // This is the main method to run the application
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Create the instance and set the current view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -30,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         lblTotalAmount = findViewById(R.id.lblTotalAmount);
     }
 
+    // This method is used to perform the calculation of the tip and final amount
     public void calculateTip(View view) {
         // Create the needed variables
         Double billAmount = Double.parseDouble(txtBillAmount.getText().toString()),
@@ -60,5 +75,31 @@ public class MainActivity extends AppCompatActivity {
         // Assign the correct fields their values
         lblTipAmount.setText(formatter.format(tipAmount));
         lblTotalAmount.setText(formatter.format(finalAmount));
+    }
+
+    // This function is used to save the instance state
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        // Initialize the instance state save
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        // Set the string to be saved
+        outState.putString(lblTipAmount.getText().toString(), tipAmount);
+        outState.putString(lblTotalAmount.getText().toString(), finalAmount);
+    }
+
+    // This function is used to restore the instance state
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        // Initialize the instance state restore
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+
+        // Restore the variables on the instance restore
+        tipAmount = savedInstanceState.getString("tipAmount");
+        finalAmount = savedInstanceState.getString("finalAmount");
+
+        // Set the labels on the actual activity
+        lblTipAmount.setText(tipAmount);
+        lblTotalAmount.setText(finalAmount);
     }
 }
