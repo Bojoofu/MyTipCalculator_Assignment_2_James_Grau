@@ -73,6 +73,30 @@ public class MainActivity extends AppCompatActivity {
 
             // Return as the user hasn't entered a bill amount
             return;
+        } else if (Double.parseDouble(txtBillAmount.getText().toString()) < 0) {
+            // Initialize an alert dialog as the bill amount isn't above 0
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            // Set the alert Message and Title
+            builder.setMessage("Oops... The bill amount wasn't a valid amount.  Please enter a valid bill amount and try again.").setTitle("Invalid Bill Amount");
+
+            // Set the alert 'OK' button
+            builder.setPositiveButton("I'll try again.", new DialogInterface.OnClickListener() {
+                // This function is used to perform the onClick action for the button
+                public void onClick(DialogInterface dialog, int id) {
+                    // Just return as the user will try again
+                    return;
+                }
+            });
+
+            // Initialize the dialog
+            AlertDialog dialog = builder.create();
+
+            // Show the alert dialog
+            dialog.show();
+
+            // Return as the user hasn't entered a bill amount
+            return;
         }
 
         // Create the needed variables
